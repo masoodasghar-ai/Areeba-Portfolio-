@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-sans-body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+@media print {
+  /* Hide all interactive and web navigation UI */
+  header,
+  footer,
+  nav,
+  #about,
+  #key-metrics,
+  #experience,
+  #initiatives,
+  #competencies,
+  #education,
+  #skills,
+  #contact,
+  .no-print,
+  button,
+  .interactive-controls,
+  div[role="dialog"]:not(.print-active-dialog) {
+    display: none !important;
+  }
+
+  /* Set page rules for A4/Letter clean print */
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Reveal and format the resume container exclusively */
+  #resume {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    background: transparent !important;
+  }
+
+  #resume > div {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Ensure the 2-column academic CV layout is preserved during print */
+  .printable-academic-cv {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+  }
+
+  .printable-academic-cv .grid {
+    display: grid !important;
+    grid-template-columns: 33% 67% !important;
+    min-height: auto !important;
+  }
+
+  /* Left Column & Banner in print */
+  .printable-academic-cv .bg-\[\#F2F5F8\],
+  .printable-academic-cv .bg-\[\#BACBDC\] {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .printable-academic-cv * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Avoid awkward page breaks inside CV sections */
+  .printable-academic-cv h1,
+  .printable-academic-cv h2,
+  .printable-academic-cv h3,
+  .printable-academic-cv h4,
+  .printable-academic-cv .space-y-3,
+  .printable-academic-cv .space-y-4,
+  .printable-academic-cv .relative.border-l-2 > div {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Ensure circular headshot prints with crisp border */
+  .printable-academic-cv img {
+    border-color: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
